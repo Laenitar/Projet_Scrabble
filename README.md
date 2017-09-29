@@ -1,1 +1,3 @@
-# Projet_Scrabble
+# Scrabble
+
+Projet d'Algorithme et Développement
