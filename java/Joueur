@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+
+public class Joueur {
+
+	String nom;
+	ArrayList<String> chevalet;
+	int score;
+	
+//---------------------Getter/Setter-----------------------
+	
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public ArrayList<String> getChevalet() {
+		return chevalet;
+	}
+	public void setChevalet(ArrayList<String> chevalet) {
+		this.chevalet = chevalet;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+//-----------------------Constructeur-------------------------
+	
+	public Joueur(String nom, ArrayList<String> chevalet, int score) {
+		super();
+		this.nom = nom;
+		this.chevalet = chevalet;
+		this.score = score;
+	}
+	
+	
+	
+	
+	
+	
+	
+
+}
