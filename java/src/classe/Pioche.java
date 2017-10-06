@@ -13,7 +13,7 @@ public class Pioche implements Pioche_Itf {
 	}
 
 	@Override
-	public Piece[] start(TableauLettreDisponible t) {
+	public Piece[] start() {
 		// TODO Auto-generated method stub
 		return null;
 	}
