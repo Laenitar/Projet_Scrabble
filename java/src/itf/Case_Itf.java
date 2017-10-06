@@ -1,7 +1,8 @@
-package Interface;
+package itf;
 
-public interface Case {
+public interface Case_Itf {
 
+	
 	
 	
 }

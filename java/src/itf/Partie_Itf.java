@@ -1,5 +1,7 @@
-package Interface;
+package itf;
 
-public interface Jeu {
+public interface Partie_Itf {public class Jeu {
+	
+	}
 
 }

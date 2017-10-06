@@ -1,5 +1,5 @@
-package Interface;
+package itf;
 
-public interface Menu {
+public interface Menu_Itf {
 
 }

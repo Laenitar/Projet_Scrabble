@@ -1,6 +1,6 @@
-package Interface;
+package itf;
 
-public interface Joueur {
+public interface Joueur_Itf {
 
 	
 }

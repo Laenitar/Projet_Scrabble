@@ -1,6 +1,6 @@
-package Interface;
+package itf;
 
-public interface Score {
+public interface Score_Itf {
 
 	
 }

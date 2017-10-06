@@ -1,5 +1,5 @@
-package Interface;
+package itf;
 
-public interface Piece {
+public interface Piece_Itf {
 
 }
