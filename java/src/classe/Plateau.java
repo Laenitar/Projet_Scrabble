@@ -1,13 +1,16 @@
+
 package classe;
 
 import itf.Plateau_Itf;
 
 public class Plateau implements Plateau_Itf {
 
+	protected Case[][] tableau = new Case[15][15];
+	
 	@Override
-	public Boolean verificationEmplacementMot(String mot) {
+	public boolean verificationEmplacementMot(String mot) {
 		// TODO Auto-generated method stub
-		return null;
+		return true;
 	}
 
 	@Override

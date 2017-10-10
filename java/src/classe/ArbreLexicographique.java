@@ -15,7 +15,7 @@ public class ArbreLexicographique {
 		Noeud[] fils = new Noeud[30];
 		this.tete = new Noeud('\u0000', false, 1, fils);
 		this.courant = tete;
-		this.remplirArbre();
+		this.remplirArbre("../dico");
 	}
 
 	private void ajouterMot(String mot) {
@@ -129,9 +129,8 @@ public class ArbreLexicographique {
 		return cpt;
 	}
 
-	private void remplirArbre() {
-		String fichier = "/home/newbie/eclipse-workspace/Scrabble/dico";
-
+	private void remplirArbre(String fichier) {
+		
 		try {
 
 			InputStream ips = new FileInputStream(fichier);
