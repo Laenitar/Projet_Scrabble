@@ -20,6 +20,7 @@ public class Piece implements Piece_Itf {
 		this.joker = joker;
 	}
 	
+	
 	public String getLettre() {
 		return lettre;
 	}
