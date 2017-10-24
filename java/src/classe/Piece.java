@@ -3,16 +3,18 @@ import itf.Piece_Itf;
 
 public class Piece implements Piece_Itf {
 
-	char lettre;
+	String lettre;
 	int point;
+	boolean b;
 	
-	public Piece(char lettre, int point) {
+	public Piece(String lettre, int point, boolean b) {
 		super();
 		this.lettre = lettre;
 		this.point = point;
+		this.b = b;
 	}
 	
-	public char getLettre() {
+	public String getLettre() {
 		return lettre;
 	}
 	
