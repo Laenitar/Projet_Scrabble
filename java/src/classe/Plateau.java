@@ -82,7 +82,7 @@ public class Plateau implements Plateau_Itf {
 					}
 						//Mot vertical
 						if (t[i-1][j]== null && t[i][j-1] == null && t[i+1][j]== null) {
-						return true
+						return true;
 					}
 				}
 			}
