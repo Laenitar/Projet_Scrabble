@@ -1,3 +1,4 @@
+
 package classe;
 
 import itf.Plateau_Itf;
@@ -7,8 +8,17 @@ public class Plateau implements Plateau_Itf {
 	
 	Case t[][] = new Case[15][15];
 
+<<<<<<< HEAD
 	public Case[][] getT() {
 		return t;
+=======
+	protected Case[][] tableau = new Case[15][15];
+	
+	@Override
+	public boolean verificationEmplacementMot(String mot) {
+		// TODO Auto-generated method stub
+		return true;
+>>>>>>> master
 	}
 
 	public void setT(Case[][] t) {

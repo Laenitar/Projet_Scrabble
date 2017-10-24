@@ -15,9 +15,32 @@ public class ArbreLexicographique {
 		Noeud[] fils = new Noeud[30];
 		this.tete = new Noeud('\u0000', false, 1, fils);
 		this.courant = tete;
-		this.remplirArbre();
+		this.remplirArbre("../dico");
 	}
 
+	private void toutLesMotsPossibles (Chevalet chevalet)
+	{
+		for (int i = 1 ; i<=chevalet.lenght() ; i++)
+			generer(i , "");
+	}
+	
+	//rajouter chevalet en paramètre? A voir l'implication ou juste sa taille peut être
+	
+	private void generer(int loop , String sb)
+	{
+		if (sb.length() >= loop)
+		{
+			System.out.println( sb);
+			return;			
+		}
+		for (int i = 0; i < chevalet.lenght(); i++)
+		{
+			//TODO
+			//a revoir pour afficher tout les mots et initialiser "tab"
+			generer(loop, sb + tab.charAt(i));
+		}
+	}
+	
 	private void ajouterMot(String mot) {
 		int i, nbFils;
 		//System.out.println(mot);
@@ -129,9 +152,8 @@ public class ArbreLexicographique {
 		return cpt;
 	}
 
-	private void remplirArbre() {
-		String fichier = "/home/newbie/eclipse-workspace/Scrabble/dico";
-
+	private void remplirArbre(String fichier) {
+		
 		try {
 
 			InputStream ips = new FileInputStream(fichier);
