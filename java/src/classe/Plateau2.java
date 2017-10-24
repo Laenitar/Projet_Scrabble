@@ -79,7 +79,8 @@ public class Plateau implements Plateau_Itf {
 
 	}
 
-	public void motValide() {
+	public boolean motValide() {
+		
 		//parcours du plateau
 		for (int i = 0; i < 15; i++) {
 
@@ -87,15 +88,16 @@ public class Plateau implements Plateau_Itf {
 				if (t[i][j] != null) {
 					//Mot horizontal
 					if (t[i-1][j]== null && t[i][j-1] == null && t[i][j+1]== null) {
-						// quoi faire ??
+						return true;
 					}
 						//Mot vertical
 						if (t[i-1][j]== null && t[i][j-1] == null && t[i+1][j]== null) {
-						// quoi faire ??
+						return true;
 					}
 				}
 			}
 		}
 	}
+	return false;
 
 }

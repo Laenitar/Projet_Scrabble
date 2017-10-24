@@ -5,6 +5,7 @@ public class Piece implements Piece_Itf {
 
 	String lettre;
 	int point;
+<<<<<<< HEAD
 	boolean joker;
 	
 	public Piece (Piece piece)
@@ -21,6 +22,17 @@ public class Piece implements Piece_Itf {
 	}
 	
 	
+=======
+	boolean b;
+	
+	public Piece(String lettre, int point, boolean b) {
+		super();
+		this.lettre = lettre;
+		this.point = point;
+		this.b = b;
+	}
+	
+>>>>>>> 5ddfc0485806c0e29d4d67ec2f5a5f5802a7f94c
 	public String getLettre() {
 		return lettre;
 	}
