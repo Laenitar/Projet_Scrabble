@@ -6,32 +6,9 @@ import java.util.Scanner;
 
 public class Plateau implements Plateau_Itf {
 	
-	Case t[][] = new Case[15][15];
+	protected Case t[][] = new Case[15][15];
 
-<<<<<<< HEAD
-	public Case[][] getT() {
-		return t;
-=======
-	protected Case[][] tableau = new Case[15][15];
-	
-	@Override
-	public boolean verificationEmplacementMot(String mot) {
-		// TODO Auto-generated method stub
-		return true;
->>>>>>> master
-	}
-
-	public void setT(Case[][] t) {
-		this.t = t;
-	}
-
-	public Plateau(Case[][] t) {
-		super();
-		this.t = t;
-
-	}
-
-	public void initialize() {
+	public Plateau() {
 
 		for (int x = 0; x < 15; x++) {
 			for (int y = 0; y < 15; y++) {
@@ -72,32 +49,25 @@ public class Plateau implements Plateau_Itf {
 		}
 	}
 
-	public void premierMot() {
-		Case[][] clone = this.t;
-		Scanner scanf1 = new Scanner(System.in);
-		System.out.println("Entrez la pièce à placer : " + scanf1);
+	@Override
+	public boolean verificationEmplacementMot(String mot) {
+		// TODO Auto-generated method stub
+		return true;
 
 	}
-
-	public boolean motValide() {
-		
-		//parcours du plateau
-		for (int i = 0; i < 15; i++) {
-
-			for (int j = 0; j < 15; j++) {
-				if (t[i][j] != null) {
-					//Mot horizontal
-					if (t[i-1][j]== null && t[i][j-1] == null && t[i][j+1]== null) {
-						return true;
-					}
-						//Mot vertical
-						if (t[i-1][j]== null && t[i][j-1] == null && t[i+1][j]== null) {
-						return true;
-					}
-				}
-			}
-		}
+	
+	public Case[][] getT() {
+		return t;
 	}
-	return false;
+	
+	public void setT(Case[][] t) {
+		this.t = t;
+	}
+
+	public Plateau(Case[][] t) {
+		super();
+		this.t = t;
+
+	}
 
 }

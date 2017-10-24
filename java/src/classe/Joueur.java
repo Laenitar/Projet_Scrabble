@@ -22,7 +22,7 @@ public abstract class Joueur implements Joueur_Itf {
 			for (int x = 0 ; x <= mot.length ; x++)
 			{
 				if (mot[x] != null)
-				plateau.tableau[i][j + x].piece = mot[x];
+				plateau.t[i][j + x].piece = mot[x];
 			}
 		}
 		else if (j == j2)
@@ -30,7 +30,7 @@ public abstract class Joueur implements Joueur_Itf {
 			for (int x = 0 ; x <= mot.length ; x++)
 			{
 				if (mot[x] != null)
-				plateau.tableau[i + x][j].piece = mot[x];
+				plateau.t[i + x][j].piece = mot[x];
 			}
 		}
 	}

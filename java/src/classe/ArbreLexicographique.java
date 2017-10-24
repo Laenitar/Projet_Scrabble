@@ -21,23 +21,21 @@ public class ArbreLexicographique {
 	private void toutLesMotsPossibles (Chevalet chevalet)
 	{
 		for (int i = 1 ; i<=chevalet.lenght() ; i++)
-			generer(i , "");
+			generer(i , "" , chevalet.lenght());
 	}
 	
-	//rajouter chevalet en paramètre? A voir l'implication ou juste sa taille peut être
-	
-	private void generer(int loop , String sb)
+	private void generer(int loop , String sb , int taille)
 	{
 		if (sb.length() >= loop)
 		{
 			System.out.println( sb);
 			return;			
 		}
-		for (int i = 0; i < chevalet.lenght(); i++)
+		for (int i = 0; i < taille; i++)
 		{
 			//TODO
 			//a revoir pour afficher tout les mots et initialiser "tab"
-			generer(loop, sb + tab.charAt(i));
+			//generer(loop, sb + tab.charAt(i));
 		}
 	}
 	
