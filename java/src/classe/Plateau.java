@@ -69,5 +69,60 @@ public class Plateau implements Plateau_Itf {
 		this.t = t;
 
 	}
+	
+	public boolean motValide(Piece c[], Case t[][], int i, int j, int i2, int j2) 
+	{
+
+		// mot horizontal
+		if (i == i2) 
+		{
+			for (int x = 0; x < c.length; x++) 
+			{
+				if (c[x] != null)
+				{ 
+					// Voir si il y'a des pièces dans le tab de pièces
+					if (t[i+x][j] == null && t[i][j-1] == null && t[i][j+1] == null) 
+					{
+						// Voir si il n'y a pas de pièces sur la ligne et au dessus/dessous de chaque lettre du mot																			
+						if (t[i - 1][j] != null && t[i][j - 1] != null && t[i][j + 1] != null && t[i2][j2 + 1] != null
+								&& t[i2 + 1][j2] != null && t[i2][j2 - 1] != null) 
+						{
+							// verification 1ere et derniere
+							// lettre du mot
+							return false;
+						}
+					} 
+					else if (t[i][j + x] != null) 
+					{
+						// ????????
+					}
+				}
+			}
+		}
+		// mot vertical
+		if (j == j2) 
+		{
+			for (int x = 0; x < c.length; x++) 
+			{
+				if (c[x] != null) 
+				{
+					if (t[i][j+x] == null && t[i-1][j] == null && t[i+1][j] == null) 
+					{
+						if (t[i - 1][j] != null && t[i][j - 1] != null && t[i + 1][j] != null
+								&& t[i2 - 1][j2] != null & t[i2][j2 + 1] != null && t[i2 + 1][j2] != null) 
+						{
+							return false;
+						}
+					}
+					else if (t[i + x][j] != null) 
+					{
+						//??????????
+					}
+				}
+			}
+		}
+		return false;
+	}
+
 
 }

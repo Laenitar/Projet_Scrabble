@@ -69,7 +69,31 @@ public class Pioche implements Pioche_Itf {
 		return stack.isEmpty();
 	}
 
+
+	public void pioche(Joueur j)
+	{
+		int i=0;
 	
+		while(i<7)
+		{
+			if(j.chevalet.lenght()<7)
+			{
+				if(j.chevalet.getChevalet()[i]==null)
+				{
+					if(this.stack.isEmpty())
+					{
+						System.out.println("you have nothing in your stack");
+					}
+					else
+					{
+						j.chevalet.getChevalet()[i] = this.stack.firstElement();
+						this.stack.remove(stack.firstElement());
+					}
+				}
+			}
+		i++;
+		}
+	}
 
 }
 
