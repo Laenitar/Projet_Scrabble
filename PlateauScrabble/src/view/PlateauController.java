@@ -73,8 +73,8 @@ public class PlateauController {
 	}
 
 	/**
-	 * Initialise la class PlateauController, est chargée automatiquement après que
-	 * le FXML soit chargé
+	 * Initialise la class PlateauController, est chargée automatiquement
+	 * après que le FXML soit chargé
 	 */
 	@FXML
 	private void initialize() {
@@ -88,8 +88,8 @@ public class PlateauController {
 	}
 
 	/**
-	 * Est appelé par l'application principale pour lui donner une reference à elle
-	 * meme
+	 * Est appelé par l'application principale pour lui donner une reference à
+	 * elle meme
 	 * 
 	 * @param mainApp
 	 */
@@ -139,8 +139,8 @@ public class PlateauController {
 	}
 
 	/**
-	 * Appeler quand le joueur appuie sur Nouvelle Partie Initialise la grille vide
-	 * et le chevalet avec 7 lettres
+	 * Appeler quand le joueur appuie sur Nouvelle Partie Initialise la grille
+	 * vide et le chevalet avec 7 lettres
 	 */
 	@FXML
 	private void handleNewGame() {
@@ -195,14 +195,16 @@ public class PlateauController {
 		// Donnee drag sur la cible
 		// System.out.println("onDragOver");
 		try {
-			// accepte le drag seulement si :
-			// la source contient un string
-			// et que le tour actuel est celui du joueur
-			// event.getGestureSource() != target &&
-			if (event.getDragboard().hasString() && tourJoueur) {
+			if (tourJoueur) {
+				// accepte le drag seulement si :
+				// la source contient un string
+				// et que le tour actuel est celui du joueur
+				// event.getGestureSource() != target &&
+				if (event.getDragboard().hasString() && tourJoueur) {
 
-				// Autorise le deplacement
-				event.acceptTransferModes(TransferMode.MOVE);
+					// Autorise le deplacement
+					event.acceptTransferModes(TransferMode.MOVE);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -221,13 +223,15 @@ public class PlateauController {
 		/* the drag-and-drop gesture entered the target */
 		System.out.println("onDragEntered");
 		try {
-			// Label target = (Label) event.getGestureTarget();
-			Label t = (Label) event.getTarget();
-			/* show to the user that it is an actual gesture target */
-			if (event.getDragboard().hasString() && t.getText() == "") {
-				BackgroundFill bf = new BackgroundFill(Color.rgb(17, 119, 255), CornerRadii.EMPTY, Insets.EMPTY);
-				Background bg = new Background(bf);
-				t.setBackground(bg);
+			if (tourJoueur) {
+				// Label target = (Label) event.getGestureTarget();
+				Label t = (Label) event.getTarget();
+				/* show to the user that it is an actual gesture target */
+				if (event.getDragboard().hasString() && t.getText() == "") {
+					BackgroundFill bf = new BackgroundFill(Color.rgb(17, 119, 255), CornerRadii.EMPTY, Insets.EMPTY);
+					Background bg = new Background(bf);
+					t.setBackground(bg);
+				}
 			}
 
 		} catch (Exception e) {
@@ -243,15 +247,17 @@ public class PlateauController {
 	 */
 	public void onDragExited(DragEvent event) {
 		try {
-			System.out.println("onDragExited");
-			Label t = (Label) event.getTarget();
+			if (tourJoueur) {
+				System.out.println("onDragExited");
+				Label t = (Label) event.getTarget();
 
-			// Enleve le fond si le coup n'a pas ete joue
-			// et si la case est vide
-			if (!success && t.getText() == "") {
-				BackgroundFill bf = new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY);
-				Background bg = new Background(bf);
-				t.setBackground(bg);
+				// Enleve le fond si le coup n'a pas ete joue
+				// et si la case est vide
+				if (!success && t.getText() == "") {
+					BackgroundFill bf = new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY);
+					Background bg = new Background(bf);
+					t.setBackground(bg);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -269,24 +275,25 @@ public class PlateauController {
 		/* data dropped */
 		System.out.println("onDragDropped");
 		try {
-			Label t = (Label) event.getTarget();
-			Label target = (Label) event.getGestureTarget();
+			if (tourJoueur) {
+				Label t = (Label) event.getTarget();
+				Label target = (Label) event.getGestureTarget();
 
-			Dragboard db = event.getDragboard();
+				Dragboard db = event.getDragboard();
 
-			if (db.hasString() && target.getText() == "") {
-				target.setText(db.getString());
+				if (db.hasString() && target.getText() == "") {
+					target.setText(db.getString());
 
-				// Change le fond d'une case avec une lettre
-				System.out.println("Fond");
-				BackgroundFill bf = new BackgroundFill(Color.rgb(255, 255, 100), CornerRadii.EMPTY, Insets.EMPTY);
-				Background bg = new Background(bf);
-				t.setBackground(bg);
-				target.setBackground(bg);
+					// Change le fond d'une case avec une lettre
+					System.out.println("Fond");
+					BackgroundFill bf = new BackgroundFill(Color.rgb(255, 255, 100), CornerRadii.EMPTY, Insets.EMPTY);
+					Background bg = new Background(bf);
+					t.setBackground(bg);
+					target.setBackground(bg);
 
-				success = true;
+					success = true;
+				}
 			}
-
 			// Specifie a la source que le drop a ete complete
 			event.setDropCompleted(success);
 		} catch (Exception e) {
@@ -297,31 +304,33 @@ public class PlateauController {
 	}
 
 	/**
-	 * A la fin du drag&drop Si le drop a ete complete enlever la lettre du chevalet
+	 * A la fin du drag&drop Si le drop a ete complete enlever la lettre du
+	 * chevalet
 	 * 
 	 * @param event
 	 */
 	@FXML
 	public void onDragDone(DragEvent event) {
 		/* the drag-and-drop gesture ended */
-		Label source = (Label) event.getGestureSource();
+		if (tourJoueur) {
+			Label source = (Label) event.getGestureSource();
 
-		System.out.println("onDragDone");
-		/* si le string a ete utilise, l'effacer */
-		if (event.getTransferMode() == TransferMode.MOVE && success) {
-			source.setText("");
-			BackgroundFill bf = new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY);
-			Background bg = new Background(bf);
-			source.setBackground(bg);
-			success = false;
+			System.out.println("onDragDone");
+			/* si le string a ete utilise, l'effacer */
+			if (event.getTransferMode() == TransferMode.MOVE && success) {
+				source.setText("");
+				BackgroundFill bf = new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY);
+				Background bg = new Background(bf);
+				source.setBackground(bg);
+				success = false;
+			}
 		}
-
 		event.consume();
 	}
 
 	/**
-	 * Specifie la fin du tour Joueur Affiche un warning si le chevalet est plein
-	 * (le joueur doit jouer un mot)
+	 * Specifie la fin du tour Joueur Affiche un warning si le chevalet est
+	 * plein (le joueur doit jouer un mot)
 	 */
 	public void handleFinTour() {
 		boolean vide = false;
