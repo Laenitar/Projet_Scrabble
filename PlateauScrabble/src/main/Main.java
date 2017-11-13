@@ -14,17 +14,8 @@ public class Main extends Application{
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
-	String[] chevalet = {"A","B","C","D","E","F","G"};
+	String[] chevalet = {"a","b","c","d","e","f","g"};
 
-	
-	/*
-	 * TODO Changer le fond d'une case en drag and drop
-	 * TODO Sauvegarde des coups pour annulation 
-	 * TODO Améliorer le plateau et les lettres pour une meilleure lisibilité
-	 * 
-	 */
-	
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
@@ -36,6 +27,7 @@ public class Main extends Application{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Plateau de Scrabble");
 		
+
 		initRootLayout();
 		showPlateauVue();
 
@@ -61,7 +53,7 @@ public class Main extends Application{
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/main/RootLayout.fxml"));
+			loader.setLocation(Main.class.getResource("RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the root layout.
@@ -77,7 +69,7 @@ public class Main extends Application{
 		 try {
 	            // Load plateau overview.
 	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(Main.class.getResource("/main/PlateauVue.fxml"));
+	            loader.setLocation(Main.class.getResource("PlateauVue.fxml"));
 	            AnchorPane plateauVue = (AnchorPane) loader.load();
 
 	            // Set plateau overview into the center of root layout.
