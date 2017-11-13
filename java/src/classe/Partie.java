@@ -4,10 +4,10 @@ import itf.Partie_Itf;
 
 public class Partie implements Partie_Itf{
 
-	Joueur[] tab_Joueur;
-	Plateau plateau;
-	Pioche pioche;
-	ArbreLexicographique dictionnaire;
+	private Joueur[] tab_Joueur;
+	private Plateau plateau;
+	private Pioche pioche;
+	private ArbreLexicographique dictionnaire;
 	
 	public Partie(Joueur[] tab_Joueur) {
 		super();

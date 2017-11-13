@@ -6,13 +6,6 @@ public class Chevalet implements Chevalet_Itf {
 
 	private Piece[] chevalet = new Piece[7];
 
-	public Piece[] getChevalet() {
-		return chevalet;
-	}
-
-	public void setChevalet(Piece[] chevalet) {
-		this.chevalet = chevalet;
-	}
 	
 	public String[] conversionTab()
 	{
@@ -23,11 +16,6 @@ public class Chevalet implements Chevalet_Itf {
 			tab[i]= this.chevalet[i].getLettre();
 		}
 		return tab;
-	}
-	
-	public int lenght()
-	{
-		return chevalet.length;
 	}
 	
 	public void echange(int p1, int p2)
@@ -41,5 +29,17 @@ public class Chevalet implements Chevalet_Itf {
 		// TODO Auto-generated method stub
 		return chevalet.length == 0;
 	}
+
+	public Piece[] getChevalet() {
+		return chevalet;
+	}
+
+	public void setChevalet(Piece[] chevalet) {
+		this.chevalet = chevalet;
+	}
 	
+	public int getLenghtChevalet()
+	{
+		return chevalet.length;
+	}
 }

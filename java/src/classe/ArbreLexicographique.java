@@ -20,8 +20,8 @@ public class ArbreLexicographique {
 
 	private void toutLesMotsPossibles (Chevalet chevalet)
 	{
-		for (int i = 1 ; i<=chevalet.lenght() ; i++)
-			generer(i , "" , chevalet.lenght());
+		for (int i = 1 ; i<=chevalet.getLenghtChevalet(); i++)
+			generer(i , "" , chevalet.getLenghtChevalet());
 	}
 	
 	private void generer(int loop , String sb , int taille)

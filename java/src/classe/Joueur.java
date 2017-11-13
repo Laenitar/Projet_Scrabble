@@ -4,8 +4,8 @@ import itf.Joueur_Itf;
 
 public abstract class Joueur implements Joueur_Itf {
 	
-	private Chevalet chevalet;
-	private int score;
+	protected Chevalet chevalet;
+	protected int score;
 	
 	public Joueur(Chevalet chevalet, int score) {
 		super();
@@ -43,8 +43,7 @@ public abstract class Joueur implements Joueur_Itf {
 	public Chevalet getChevalet() {
 		return chevalet;
 	}
-
-
+	
 	public void setChevalet(Chevalet chevalet) {
 		this.chevalet = chevalet;
 	}
