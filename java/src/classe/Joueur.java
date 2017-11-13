@@ -4,8 +4,8 @@ import itf.Joueur_Itf;
 
 public abstract class Joueur implements Joueur_Itf {
 	
-	Chevalet chevalet;
-	int score;
+	protected Chevalet chevalet;
+	protected int score;
 	
 	public Joueur(Chevalet chevalet, int score) {
 		super();
@@ -13,9 +13,8 @@ public abstract class Joueur implements Joueur_Itf {
 		this.score = score;
 	}
 	
-	
-	
-	public void jouerUnMot (Plateau plateau , Piece[] mot , int i , int j , int i2 , int j2)
+
+/*	private void jouerUnMot (Plateau plateau , Piece[] mot , int i , int j , int i2 , int j2)
 	{
 		if (i == i2)
 		{
@@ -33,11 +32,31 @@ public abstract class Joueur implements Joueur_Itf {
 				plateau.t[i + x][j].piece = mot[x];
 			}
 		}
-	}
+	}*/
 	
 	public void aide (ArbreLexicographique dico)
 	{
 		
 	}
+
+
+	public Chevalet getChevalet() {
+		return chevalet;
+	}
+	
+	public void setChevalet(Chevalet chevalet) {
+		this.chevalet = chevalet;
+	}
+
+
+	public int getScore() {
+		return score;
+	}
+
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
 
 }

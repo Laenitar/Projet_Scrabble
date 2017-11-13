@@ -6,7 +6,7 @@ import itf.Pioche_Itf;
 
 public class Pioche implements Pioche_Itf {
 
-	Stack<Piece> stack;
+	private Stack<Piece> stack;
 
 	public Pioche() {
 
@@ -76,9 +76,9 @@ public class Pioche implements Pioche_Itf {
 	
 		while(i<7)
 		{
-			if(j.chevalet.lenght()<7)
+			if(j.getChevalet().getLenghtChevalet() < 7)
 			{
-				if(j.chevalet.getChevalet()[i]==null)
+				if(j.getChevalet().getChevalet()[i] == null)
 				{
 					if(this.stack.isEmpty())
 					{
@@ -86,7 +86,7 @@ public class Pioche implements Pioche_Itf {
 					}
 					else
 					{
-						j.chevalet.getChevalet()[i] = this.stack.firstElement();
+						j.getChevalet().getChevalet()[i] = this.stack.firstElement();
 						this.stack.remove(stack.firstElement());
 					}
 				}

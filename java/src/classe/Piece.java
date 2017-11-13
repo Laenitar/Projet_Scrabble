@@ -3,9 +3,9 @@ import itf.Piece_Itf;
 
 public class Piece implements Piece_Itf {
 
-	String lettre;
-	int point;
-	boolean joker;
+	private String lettre;
+	private int point;
+	private boolean joker;
 	
 	public Piece (Piece piece)
 	{

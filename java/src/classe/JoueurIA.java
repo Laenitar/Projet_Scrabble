@@ -5,9 +5,9 @@ import java.util.List;
 
 public class JoueurIA extends Joueur {
 
-	protected String nom;
-	protected int difficulte;
-	protected static int nombreIa = 0;
+	private String nom;
+	private int difficulte;
+	private static int nombreIa = 0;
 	
 	public JoueurIA(Chevalet chevalet, int score, int difficulte) {
 		super(chevalet, score);

@@ -4,7 +4,7 @@ public class Noeud {
 
 	private char lettre;
 	private boolean mot;
-	int niveau;
+	private int niveau;
 	private Noeud[] fils;
 	
 	public Noeud(char l, boolean m, int n, Noeud[] f) {
