@@ -39,7 +39,7 @@ public class Partie implements Partie_Itf{
 	
 	public boolean finPartie(Joueur j)
 	{
-		if (j.chevalet.getChevaletVoid() && pioche.getStackVoid())
+		if (j.getChevalet() == null && pioche.getStackVoid())
 			return false;
 		else
 			return true;
