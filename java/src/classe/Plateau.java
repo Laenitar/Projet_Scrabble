@@ -41,8 +41,11 @@ public class Plateau implements Plateau_Itf {
 						|| (x == 11 && (y == 0 || y == 7 || y == 14)) || (x == 12 && (y == 6 || y == 8))
 						|| (x == 14 && (14 == 3 || y == 11))) {
 
-					t[x][y] = new Case(Bonus.LETTRE_DOUBLE, null);
-
+					t[x][y] = new Case(Bonus.LETTRE_DOUBLE, null);	
+				}
+				else
+				{
+					t[x][y] = new Case(Bonus.NORMAL, null);
 				}
 			}
 
@@ -66,48 +69,41 @@ public class Plateau implements Plateau_Itf {
 	}
 	
 	private boolean motValideHorizontale(Piece c[], int i, int j, int i2, int j2) 
-	{
-		if (t[i][j-1] != null && t[i][j2+1] != null)
+	{		
+		if (t[i][j-1].getPiece() == null && t[i][j2+1].getPiece() == null)
 		{
 			for (int x = 0; x < c.length; x++) 
 			{	
 				if (c[x] != null) //Verif si la case du mot récuperer contient une lettre
 				{
-					if(t[i+x][j] == null && t[i+x][j-1] == null && t[i+x][j+1] == null)// verifie la case,la case en haut et celle du bas
-					{
-						return true;
-					}
-					else
+					if(t[i][j+x].getPiece() != null && t[i-1][j+x].getPiece() != null && t[i+1][j+x].getPiece() != null)// verifie la case,la case en haut et celle du bas
 					{
 						return false;
-					}
-					
+					}				
 				}
 				else
 				{
-					if (t[i+x][j] == null)
+					if (t[i][j+x].getPiece() == null)
 					{
 						return false;
 					}
 				}
 			}  
 		}
-		return false;
+		else
+			return false;
+		return true;
 	}
 	
 	private boolean motValideVertical(Piece c[], int i, int j, int i2, int j2) 
 	{
-		if (t[i-1][j] != null && t[i2+1][j] != null)
+		if (t[i-1][j].getPiece() == null && t[i2+1][j].getPiece() == null)
 		{
 			for (int x = 0; x < c.length; x++) 
 			{	
 				if (c[x] != null) //Verif si la case du mot récuperer contient une lettre
 				{
-					if(t[i][j+x] == null && t[i-1][j+x] == null && t[i+1][j+x] == null)// verifie la case,la case en haut et celle du bas
-					{
-						return true;
-					}
-					else
+					if(t[i+x][j].getPiece() != null && t[i+x][j-1].getPiece() != null && t[i+x][j+1].getPiece() != null)// verifie la case,la case en haut et celle du bas
 					{
 						return false;
 					}
@@ -115,15 +111,34 @@ public class Plateau implements Plateau_Itf {
 				}
 				else
 				{
-					if (t[i][j+x] == null)
+					if (t[i+x][j].getPiece() == null)
 					{
 						return false;
 					}
 				}
 			}  
 		}
-		return false;
+		else
+			return false;
+		return true;
 	}
 
+	public Case getCase(int i, int j) {
+		return t[i][j];
+	}	
 
+	public void affichage()
+	{
+		for (int i = 0 ; i < 15 ; i++)
+			{
+				for (int j = 0 ; j< 15 ; j++)
+				{
+					if (t[i][j].getPiece()!= null)
+						System.out.print(t[i][j].getPiece().getLettre());
+					else 
+						System.out.print("O");
+				}
+				System.out.println();
+			}
+	}
 }

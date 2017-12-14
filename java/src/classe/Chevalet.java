@@ -18,13 +18,6 @@ public class Chevalet implements Chevalet_Itf {
 		return tab;
 	}
 	
-	public void echange(int p1, int p2)
-	{
-		Piece a = new Piece(chevalet[p2]);
-		chevalet[p2] = chevalet[p1];
-		chevalet[p1] = a;
-	}
-	
 	public boolean getChevaletVoid() {
 		// TODO Auto-generated method stub
 		return chevalet.length == 0;
