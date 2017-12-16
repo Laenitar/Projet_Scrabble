@@ -8,21 +8,24 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.JoueurReel;
+import model.Pioche;
 import view.PlateauController;
 
-public class Main extends Application{
+public class Main extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
-	String[] chevalet = {"A","B","C","D","E","F","G"};
+	String[] chevalet = { "A", "B", "C", "D", "E", "F", "G" };
+	static Pioche p = new Pioche();
+	static JoueurReel j1 = new JoueurReel("Maxime");
+	static JoueurReel j2 = new JoueurReel("Corentin");
 
-	
 	/*
-	 * TODO Sauvegarde des coups pour annulation 
+	 * TODO Sauvegarde des coups pour annulation
 	 * 
 	 */
-	
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
@@ -33,7 +36,9 @@ public class Main extends Application{
 
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Plateau de Scrabble");
-		
+		j1.pioche();
+		j2.pioche();
+
 		initRootLayout();
 		showPlateauVue();
 
@@ -47,7 +52,7 @@ public class Main extends Application{
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-	
+
 	public String[] getChevalet() {
 		return chevalet;
 	}
@@ -70,26 +75,41 @@ public class Main extends Application{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void showPlateauVue() {
-		 try {
-	            // Load plateau overview.
-	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(Main.class.getResource("/main/PlateauVue.fxml"));
-	            AnchorPane plateauVue = (AnchorPane) loader.load();
+		try {
+			// Load plateau overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/main/PlateauVue.fxml"));
+			AnchorPane plateauVue = (AnchorPane) loader.load();
 
-	            // Set plateau overview into the center of root layout.
-	            rootLayout.setCenter(plateauVue);
-	            
-	         // Give the controller access to the main app.
-	            PlateauController controller = loader.getController();
-	            controller.setMainApp(this);
+			// Set plateau overview into the center of root layout.
+			rootLayout.setCenter(plateauVue);
 
-	            
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		
+			// Give the controller access to the main app.
+			PlateauController controller = loader.getController();
+			controller.setMainApp(this);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static Pioche getP() {
+		return p;
+	}
+
+	public static void setP(Pioche p) {
+		Main.p = p;
+	}
+
+	public JoueurReel getJoueurReel() {
+		if (PlateauController.tourJoueur1)
+			return j1;
+		else if(PlateauController.tourJoueur2)
+			return j2;
+		else return null;
 	}
 
 }
