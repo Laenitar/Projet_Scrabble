@@ -189,7 +189,7 @@ public class PlateauController {
 		// System.out.println("onDragDetected");
 		Label2 source = (Label2) event.getSource();
 		// System.out.println(source.getFixe());
-		if (!source.getFixe()) {
+		if (!source.getFixe() && source.getText() != null && source.getText() != "") {
 			/* Autorise n'importe quel mode de transfert */
 			Dragboard db = source.startDragAndDrop(TransferMode.ANY);
 
@@ -219,7 +219,7 @@ public class PlateauController {
 				// la source contient un string
 				// et que le tour actuel est celui du joueur
 				// event.getGestureSource() != target &&
-				if (event.getDragboard().hasString() && (tourJoueur1 || tourJoueur2)) {
+				if (event.getDragboard().getString() != "" && event.getDragboard() != null && event.getDragboard().hasString() && (tourJoueur1 || tourJoueur2)) {
 
 					// Autorise le deplacement
 					event.acceptTransferModes(TransferMode.MOVE);
@@ -368,8 +368,10 @@ public class PlateauController {
 				// Pioche pour le prochain tour
 				pioche();
 				// Changement de tour
+				System.out.println("tj1 :"+tourJoueur1+" tj2:"+tourJoueur2);
 				tourJoueur1 = !tourJoueur1;
 				tourJoueur2 = !tourJoueur2;
+				System.out.println("tj1 :"+tourJoueur1+" tj2:"+tourJoueur2);
 				fixeLettre();
 				tourJoueur();
 
@@ -420,7 +422,7 @@ public class PlateauController {
 		if (mot.size() < 2)
 			return false;
 
-		System.out.println("Mot: " + mot.toString());
+		//System.out.println("Mot: " + mot.toString());
 		Piece tp[];
 
 		if (isHorizontal(mot)) {
@@ -428,7 +430,7 @@ public class PlateauController {
 			tp = new Piece[taille];
 			int index = getIndex(GridPane.getRowIndex(mot.get(0)), GridPane.getColumnIndex(mot.get(0)));
 
-			System.out.println("HORIZONTAL");
+			//System.out.println("HORIZONTAL");
 			for (int j = 0; j < taille; j++) {
 				Label2 l1 = (Label2) plateau.getChildren().get(index + j);
 
@@ -445,7 +447,7 @@ public class PlateauController {
 			tp = new Piece[taille];
 			int index = getIndex(GridPane.getRowIndex(mot.get(0)), GridPane.getColumnIndex(mot.get(0)));
 
-			System.out.println("VERTICAL");
+			//System.out.println("VERTICAL");
 			for (int j = 0; j < taille; j++) {
 				Label2 l1 = (Label2) plateau.getChildren().get(index + j * 15);
 
@@ -493,9 +495,11 @@ public class PlateauController {
 	}
 
 	public void pioche() {
-		JoueurReel j = mainApp.getJoueurReel();
-		j.pioche();
-		showChevalet(chevalet1);
+		mainApp.getJoueurReel().pioche();
+		if(tourJoueur1)
+			showChevalet(chevalet1);
+		else if(tourJoueur2)
+			showChevalet(chevalet2);
 	}
 
 	public void fixeLettre() {
@@ -559,12 +563,14 @@ public class PlateauController {
 	
 	public void calculScore(Piece[] mot,int i, int j, int i2, int j2){
 		int score = p.score(mot,i,j,i2,j2);
-		System.out.println(score);
+
 		if(tourJoueur1){
 			scoreJ1 += score;
+			System.out.println("J1:"+scoreJ1);
 			score1.setText(String.valueOf(scoreJ1));
 		}else if(tourJoueur2){
 			scoreJ2 += score;
+			System.out.println("J2:"+scoreJ2);
 			score2.setText(String.valueOf(scoreJ2));
 		}
 	}

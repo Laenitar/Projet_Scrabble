@@ -165,7 +165,7 @@ public class Plateau {
 			}
 
 			}
-			System.out.println("scoreF :"+score);
+			
 			c++;
 		}
 		if (iteration_mot_double != 0)
@@ -226,11 +226,9 @@ public class Plateau {
 
 	public int score(Piece mot[], int i1, int j1, int i2, int j2) {
 		if (i1 == i2) {
-			System.out.println("scoreH");
 			return (score_horizontal(mot, i1, j1, j2));
 		}
 		if (j1 == j2) {
-			System.out.println("scoreV");
 			return (score_vertical(mot, i1, j1, i2));
 		}
 		return 0;
